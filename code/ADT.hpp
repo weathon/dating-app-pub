@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 typedef std::vector<float> floatArray;
 typedef std::vector<int> intArray;
 #include "distance.hpp"
@@ -37,14 +38,16 @@ intArray randomArray(int size)
         list.push_back(i);
     }
 
-    for (int i = 0; i < 8; i++) //too slow becasue it did not swap at all
+    /*for (int i = 0; i < 8; i++) //too slow becasue it did not swap at all
     {
         rnd = rand()%size;
         rnd2 = rand()%size;
         tmp=list[rnd];
         list[rnd]=list[rnd2];
         list[rnd2]=tmp;
-    }
+    }*/
+    std::random_shuffle(list.begin(), list.end());
+    // https://stackoverflow.com/questions/14720134/is-it-possible-to-random-shuffle-an-array-of-int-elements
     return list;
 }
 
